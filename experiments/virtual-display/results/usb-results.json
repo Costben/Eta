@@ -1,0 +1,223 @@
+{
+  "device": {
+    "manufacturer": "OnePlus",
+    "model": "PLZ110",
+    "android": "17",
+    "api": 37,
+    "rom": "PLZ110_17.0.0.106(CN01)",
+    "securityPatch": "2026-09-01",
+    "root": "KernelSU 3.3.0",
+    "adbUid": 0,
+    "etaVersion": "3.2.0",
+    "keyguardSecure": false,
+    "lockScreenDisabled": true
+  },
+  "virtualDisplay": {
+    "id": 9,
+    "name": "EtaVDProbe",
+    "size": [
+      720,
+      1280
+    ],
+    "dpi": 320,
+    "flags": 130507,
+    "actualDisplayGroup": 0
+  },
+  "cases": {
+    "baseline": {
+      "strategy": "sleep",
+      "seconds": 12,
+      "passed": false,
+      "marker": "USB探索-sleep-48288000",
+      "before": {
+        "event": "tick",
+        "display": 9,
+        "task": 1274,
+        "counter": 0,
+        "ticks": 5,
+        "text": "",
+        "resumed": true,
+        "deviceLocked": false,
+        "deviceSecure": false,
+        "keyguardLocked": false
+      },
+      "after": null,
+      "first": {
+        "ok": true,
+        "uid": 0,
+        "pid": 28537,
+        "independent": true,
+        "flags": 130507,
+        "displayId": 9,
+        "displayState": 1,
+        "frames": 31,
+        "frameAgeMs": 2055,
+        "frameChecksum": -2681446916913149582,
+        "deviceSecure": false,
+        "keyguardLocked": false,
+        "cpuWakeLockHeld": true
+      },
+      "end": {
+        "ok": true,
+        "uid": 0,
+        "pid": 28537,
+        "independent": true,
+        "flags": 130507,
+        "displayId": 9,
+        "displayState": 1,
+        "frames": 31,
+        "frameAgeMs": 25144,
+        "frameChecksum": -2681446916913149582,
+        "deviceSecure": false,
+        "keyguardLocked": false,
+        "cpuWakeLockHeld": true
+      },
+      "displayStatesBefore": {
+        "0": "OFF",
+        "9": "OFF"
+      },
+      "displayStatesAfter": {
+        "0": "OFF",
+        "9": "OFF"
+      },
+      "keyguard": "showing=false\n      inputRestricted=false\n      occluded=false\n      trusted=false\n      simSecure=false\n      dreaming=false\n      systemReady=true\n      deviceHasKeyguard=true\n      enabled=true\n      userId=0\n      bootCompleted=true\n      screenState=SCREEN_STATE_OFF\n      interactiveState=INTERACTIVE_STATE_SLEEP"
+    },
+    "modified": {
+      "strategy": "display-only",
+      "seconds": 120,
+      "passed": true,
+      "marker": "USB探索-display-only-36439000",
+      "before": {
+        "event": "tick",
+        "display": 9,
+        "task": 1274,
+        "counter": 0,
+        "ticks": 17,
+        "text": "",
+        "resumed": true,
+        "deviceLocked": false,
+        "deviceSecure": false,
+        "keyguardLocked": false
+      },
+      "after": {
+        "event": "tick",
+        "display": 9,
+        "task": 1274,
+        "counter": 1,
+        "ticks": 140,
+        "text": "USB探索-display-only-36439000",
+        "resumed": true,
+        "deviceLocked": false,
+        "deviceSecure": false,
+        "keyguardLocked": false
+      },
+      "first": {
+        "ok": true,
+        "uid": 0,
+        "pid": 28537,
+        "independent": true,
+        "flags": 130507,
+        "displayId": 9,
+        "displayState": 2,
+        "frames": 48,
+        "frameAgeMs": 280,
+        "frameChecksum": 4658792099461860497,
+        "deviceSecure": false,
+        "keyguardLocked": false,
+        "cpuWakeLockHeld": true
+      },
+      "end": {
+        "ok": true,
+        "uid": 0,
+        "pid": 28537,
+        "independent": true,
+        "flags": 130507,
+        "displayId": 9,
+        "displayState": 2,
+        "frames": 202,
+        "frameAgeMs": 529,
+        "frameChecksum": 7010868282836694294,
+        "deviceSecure": false,
+        "keyguardLocked": false,
+        "cpuWakeLockHeld": true
+      },
+      "displayStatesBefore": {
+        "0": "OFF",
+        "9": "ON"
+      },
+      "displayStatesAfter": {
+        "0": "OFF",
+        "9": "ON"
+      },
+      "keyguard": "showing=false\n      inputRestricted=false\n      occluded=false\n      trusted=false\n      simSecure=false\n      dreaming=false\n      systemReady=true\n      deviceHasKeyguard=true\n      enabled=true\n      userId=0\n      bootCompleted=true\n      screenState=SCREEN_STATE_ON\n      interactiveState=INTERACTIVE_STATE_AWAKE"
+    },
+    "rollback": {
+      "strategy": "sleep",
+      "seconds": 12,
+      "passed": false,
+      "marker": "USB探索-sleep-55831000",
+      "before": {
+        "event": "tick",
+        "display": 9,
+        "task": 1274,
+        "counter": 1,
+        "ticks": 143,
+        "text": "USB探索-display-only-36439000",
+        "resumed": true,
+        "deviceLocked": false,
+        "deviceSecure": false,
+        "keyguardLocked": false
+      },
+      "after": null,
+      "first": {
+        "ok": true,
+        "uid": 0,
+        "pid": 28537,
+        "independent": true,
+        "flags": 130507,
+        "displayId": 9,
+        "displayState": 1,
+        "frames": 205,
+        "frameAgeMs": 2716,
+        "frameChecksum": 598588603915345075,
+        "deviceSecure": false,
+        "keyguardLocked": false,
+        "cpuWakeLockHeld": true
+      },
+      "end": {
+        "ok": true,
+        "uid": 0,
+        "pid": 28537,
+        "independent": true,
+        "flags": 130507,
+        "displayId": 9,
+        "displayState": 1,
+        "frames": 205,
+        "frameAgeMs": 25805,
+        "frameChecksum": 598588603915345075,
+        "deviceSecure": false,
+        "keyguardLocked": false,
+        "cpuWakeLockHeld": true
+      },
+      "displayStatesBefore": {
+        "0": "OFF",
+        "9": "OFF"
+      },
+      "displayStatesAfter": {
+        "0": "OFF",
+        "9": "OFF"
+      },
+      "keyguard": "showing=false\n      inputRestricted=false\n      occluded=false\n      trusted=false\n      simSecure=false\n      dreaming=false\n      systemReady=true\n      deviceHasKeyguard=true\n      enabled=true\n      userId=0\n      bootCompleted=true\n      screenState=SCREEN_STATE_OFF\n      interactiveState=INTERACTIVE_STATE_SLEEP"
+    }
+  },
+  "profileHashes": {
+    "baseline": "228acf3d3b9574c4f106314fdac520700fac231135916e5c271ed6b639a619f8",
+    "modified": "11e3475da0c730cf3b1c98f65066d2704114fd5aab12e42cae1472203c3655e3",
+    "rollback": "228acf3d3b9574c4f106314fdac520700fac231135916e5c271ed6b639a619f8"
+  },
+  "systemSourceHashes": {
+    "services.jar": "ab0b072c056d17bbf65643b8b7e9b7f650f341d2691bc42a0796687bd0ca48eb",
+    "oplus-services.jar": "3146424914814a7bcfd73b39db56c6f4bb474a814eaadae934cf7b068d268cbe",
+    "ProbeMain.baseline.java": "bc1a4cc60095f5a6d33dbada58f63749f3236cf6b15fb0acb3d989aed388ea7f"
+  }
+}

@@ -1,0 +1,64 @@
+Eta USB virtual-display verification — 2026-10-07
+Branch: explore/usb-virtual-display
+Changed field: profile.json power_strategy: sleep -> display-only
+MODIFIED_FILE: /Users/rinshibuya/Downloads/Erl-Project/Eta/experiments/virtual-display/profile.json
+DIFF_FILE: /Users/rinshibuya/Downloads/Erl-Project/Eta/experiments/virtual-display/profile.diff
+VERIFICATION: /Users/rinshibuya/Downloads/Erl-Project/Eta/experiments/virtual-display/VERIFICATION.txt
+ROLLBACK: /Users/rinshibuya/Downloads/Erl-Project/Eta/experiments/virtual-display/ROLLBACK.sh
+BASELINE_SHA256: 228acf3d3b9574c4f106314fdac520700fac231135916e5c271ed6b639a619f8
+MODIFIED_SHA256: 11e3475da0c730cf3b1c98f65066d2704114fd5aab12e42cae1472203c3655e3
+ROLLBACK_SHA256: 228acf3d3b9574c4f106314fdac520700fac231135916e5c271ed6b639a619f8
+
+BASELINE
+COMMAND: python3 experiments/virtual-display/run_case.py --serial 3B163B004PM00000 --profile experiments/virtual-display/artifacts/profile.baseline.json --seconds 12 --output experiments/virtual-display/artifacts/baseline.json
+INPUT: {"power_strategy":"sleep"}
+TEST_TEXT: USB探索-sleep-48288000
+LITERAL_OUTPUT: {"strategy":"sleep","result":"FAIL","main":"OFF","virtual":"OFF","freshFrames":false,"counterVerified":false,"chineseVerified":false,"deviceSecure":false}
+EXIT_STATUS: 1
+FRAME_COUNT: 31 -> 31
+
+MODIFIED
+COMMAND: python3 experiments/virtual-display/run_case.py --serial 3B163B004PM00000 --profile experiments/virtual-display/profile.json --seconds 120 --output experiments/virtual-display/artifacts/modified.json
+INPUT: {"power_strategy":"display-only"}
+TEST_TEXT: USB探索-display-only-36439000
+LITERAL_OUTPUT: {"strategy":"display-only","result":"PASS","main":"OFF","virtual":"ON","freshFrames":true,"counterVerified":true,"chineseVerified":true,"deviceSecure":false}
+EXIT_STATUS: 0
+FRAME_COUNT: 48 -> 202
+
+ROLLBACK
+COMMAND: python3 experiments/virtual-display/run_case.py --serial 3B163B004PM00000 --profile experiments/virtual-display/artifacts/profile.rollback.json --seconds 12 --output experiments/virtual-display/artifacts/rollback.json
+INPUT: {"power_strategy":"sleep"}
+TEST_TEXT: USB探索-sleep-55831000
+LITERAL_OUTPUT: {"strategy":"sleep","result":"FAIL","main":"OFF","virtual":"OFF","freshFrames":false,"counterVerified":false,"chineseVerified":false,"deviceSecure":false}
+EXIT_STATUS: 1
+FRAME_COUNT: 205 -> 205
+
+ROLLBACK_COPY_PREPARATION
+COMMAND: cp experiments/virtual-display/profile.json experiments/virtual-display/artifacts/profile.rollback.json
+LITERAL_OUTPUT: (empty)
+EXIT_STATUS: 0
+COMMAND: experiments/virtual-display/ROLLBACK.sh experiments/virtual-display/artifacts/profile.rollback.json
+INPUT: separate copy of modified profile
+LITERAL_OUTPUT: ROLLBACK_PROFILE_RESTORED power_strategy=sleep
+EXIT_STATUS: 0
+RESTORED_BEHAVIOR: ordinary sleep turns both displays OFF; frames and synthetic App actions stop
+MODIFIED_FILE_RETAINED: power_strategy=display-only
+
+RESTORED_DEVICE_STATE
+STOP_COMMAND: python3 experiments/virtual-display/rpc.py '{"action":"stop"}'
+LITERAL_OUTPUT: {"ok":true,"action":"stop"}
+EXIT_STATUS: 0
+HELPER_LITERAL_OUTPUT: ETA_VD_RELEASED
+HELPER_EXIT_STATUS: 0
+APP_UNINSTALL_COMMAND: adb -s 3B163B004PM00000 uninstall io.github.costben.etavdprobe
+LITERAL_OUTPUT: Success
+EXIT_STATUS: 0
+READBACK: {"displayIds":["0"],"helperGone":true,"probeAppRemoved":true,"probeWakeLockReleased":true,"mainDisplayState":"ON","settings":{"enabled_accessibility_services":"null","accessibility_enabled":"0","screen_off_timeout":"120000","stay_on_while_plugged_in":"0"},"lockScreenDisabled":"true","deviceArtifactRemoved":true,"usbForwardRemoved":true}
+RESTORATION_RESULT: PASS
+
+LIMIT: credential lock, Eta AccessibilityService, LSPosed group adaptation, unplugged/Doze/network/long-duration behavior await verification
+VOID_ATTEMPT: overlapping observation window discarded; final comparison sequential with process lock and unique Chinese text
+BUILD_COMMAND: experiments/virtual-display/build.sh
+BUILD_LITERAL_OUTPUT: BUILD_PASS build/probe.jar build/probe.apk
+BUILD_EXIT_STATUS: 0
+SYSTEM_JARS: locally inspected copies; hashes recorded in results/usb-results.json; originals unchanged

@@ -6,9 +6,11 @@
 - Fork：[Costben/Eta](https://github.com/Costben/Eta)。
 - 探索分支：`docs/virtual-display-exploration`。
 - 源码基线：`9de3a3f70aba497bd8fd677cb5b876f45115b428`，从 `upstream/main` 建立分支。
-- 本轮完成了仓库、Android 框架和 scrcpy 源码调研；设备、ROM、Root 管理器与 LSPosed 版本尚待确定，真机结果待记录。
+- 首次调研完成了仓库、Android 框架和 scrcpy 源码检查；同日已开始 USB 真机探索，设备条件、结果与修正见 [USB 实测报告](VIRTUAL_DISPLAY_USB_RESULTS.md)。
 
 ## 1. 结论与立项条件
+
+**USB 首轮修正：** OnePlus PLZ110 / ColorOS 17 的 UID 0 辅助进程已成功创建虚拟屏，亮屏与物理屏单独关闭时的画面、节点、点击和中文赋值已跑通。普通休眠会把虚拟屏一起关闭；设备当前凭证锁与锁屏界面均未启用。后续立项门槛仍需验证实际独立分组及凭证锁，而不是只看创建标志。
 
 **值得进入小型验证原型。Android 已有独立虚拟屏、按屏操作和副屏保持解锁的机制；Eta 当前需要补齐显示屏路由。**
 
